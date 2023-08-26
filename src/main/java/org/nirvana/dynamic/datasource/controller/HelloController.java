@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+
 @Slf4j
 @RestController
 public class HelloController {
@@ -23,12 +27,15 @@ public class HelloController {
     @Autowired
     private ReservationMapper reservationMapper;
 
-    @GetMapping("/hello")
-    public String hello() {
-        log.info("write-data-source: {}", dynamicWriteDatasourceProperties);
-        log.info("read-data-source: {}", dynamicReadDatasourceProperties);
+    @Autowired
+    private DataSource dataSource;
 
-        Reservation reservation = reservationMapper.selectById(1);
+    @GetMapping("/hello")
+    public String hello() throws SQLException {
+//        log.info("write-data-source: {}", dynamicWriteDatasourceProperties);
+//        log.info("read-data-source: {}", dynamicReadDatasourceProperties);
+
+        log.info("data-source: {}", dataSource.getConnection());
 
         return "success";
     }
