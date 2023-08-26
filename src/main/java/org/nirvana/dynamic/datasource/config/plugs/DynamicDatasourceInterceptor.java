@@ -10,6 +10,8 @@ import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
+import org.nirvana.dynamic.datasource.DynamicDataSourceType;
+import org.nirvana.dynamic.datasource.config.DynamicSelector;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -24,9 +26,10 @@ public class DynamicDatasourceInterceptor implements Interceptor {
     public Object intercept(Invocation invocation) throws Throwable {
         Method method = invocation.getMethod();
         Object[] args = invocation.getArgs();
-        log.info("method-name: {}, args: {}", method.getName(), JSONUtil.toJsonStr(args));
+        log.info("method-name: {}, args: {}", method.getName(), args);
+        DynamicSelector.setDataSourceType(DynamicDataSourceType.READ);
 
-        return null;
+        return invocation.proceed();
     }
 
 }
