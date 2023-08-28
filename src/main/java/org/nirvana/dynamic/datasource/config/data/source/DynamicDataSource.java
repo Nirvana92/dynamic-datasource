@@ -39,7 +39,7 @@ public class DynamicDataSource extends AbstractDynamicDataSource implements Init
     public Connection getConnection(String username, String password) throws SQLException {
         Integer dataSourceType = DynamicDataSourceSelector.getDataSourceType();
         log.info("get-connection-with-param-data-source-type: {}", dataSourceType);
-        return dataSourceMap.get(dataSourceType).getConnection();
+        return dataSourceMap.get(dataSourceType).getConnection(username, password);
     }
 
     @Override
