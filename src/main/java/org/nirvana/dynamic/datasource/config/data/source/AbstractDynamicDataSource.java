@@ -9,18 +9,6 @@ import java.util.logging.Logger;
 
 public abstract class AbstractDynamicDataSource implements DataSource {
 
-    /**
-     * 获取读数据源
-     * @return
-     */
-//    protected abstract DataSource getReadDataSource();
-
-    /**
-     * 获取写数据源
-     * @return
-     */
-//    protected abstract DataSource getWriteDataSource();
-
     @Override
     public <T> T unwrap(Class<T> iface) throws SQLException {
         throw new SQLException("Can't support unwrap method!");
