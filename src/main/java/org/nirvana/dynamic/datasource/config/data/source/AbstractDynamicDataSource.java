@@ -1,4 +1,4 @@
-package org.nirvana.dynamic.datasource.config;
+package org.nirvana.dynamic.datasource.config.data.source;
 
 import javax.sql.DataSource;
 import java.io.PrintWriter;

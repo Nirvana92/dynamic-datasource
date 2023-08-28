@@ -1,6 +1,5 @@
 package org.nirvana.dynamic.datasource.config.plugs;
 
-import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -11,7 +10,7 @@ import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.nirvana.dynamic.datasource.DynamicDataSourceType;
-import org.nirvana.dynamic.datasource.config.DynamicSelector;
+import org.nirvana.dynamic.datasource.config.selector.DynamicDataSourceSelector;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -27,7 +26,7 @@ public class DynamicDatasourceInterceptor implements Interceptor {
         Method method = invocation.getMethod();
         Object[] args = invocation.getArgs();
         log.info("method-name: {}, args: {}", method.getName(), args);
-        DynamicSelector.setDataSourceType(DynamicDataSourceType.READ);
+        DynamicDataSourceSelector.setDataSourceType(DynamicDataSourceType.READ);
 
         return invocation.proceed();
     }

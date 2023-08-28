@@ -2,8 +2,7 @@ package org.nirvana.dynamic.datasource.controller;
 
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.nirvana.dynamic.datasource.config.properties.DynamicReadDatasourceProperties;
-import org.nirvana.dynamic.datasource.config.properties.DynamicWriteDatasourceProperties;
+import org.nirvana.dynamic.datasource.config.properties.DynamicDatasourceProperties;
 import org.nirvana.dynamic.datasource.entity.Reservation;
 import org.nirvana.dynamic.datasource.mapper.ReservationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +16,7 @@ import java.sql.SQLException;
 public class HelloController {
 
     @Autowired
-    DynamicWriteDatasourceProperties dynamicWriteDatasourceProperties;
-
-    @Autowired
-    DynamicReadDatasourceProperties dynamicReadDatasourceProperties;
+    DynamicDatasourceProperties dynamicWriteDatasourceProperties;
 
     @Autowired
     private ReservationMapper reservationMapper;
